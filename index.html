@@ -19,19 +19,16 @@
       --bg-color: #121316;
       --dot-color: #2b2d35;
       --text-color: #ffffff;
-      --yellow-accent: #ffde00;
-      --blue-accent: #0084ff;
-      --shadow-color: #000000;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-color);
       background-image: radial-gradient(var(--dot-color) 2px, transparent 2px);
       background-size: 24px 24px;
@@ -85,28 +82,19 @@
       stroke-linejoin: round;
     }
 
-    .theme-toggle-btn .sun-icon {
-      display: none;
-    }
-
-    .theme-toggle-btn .moon-icon {
-      display: block;
-    }
-
-    [data-theme="dark"] .theme-toggle-btn .sun-icon {
-      display: block;
-    }
-
-    [data-theme="dark"] .theme-toggle-btn .moon-icon {
-      display: none;
-    }
+    .theme-toggle-btn .sun-icon { display: none; }
+    .theme-toggle-btn .moon-icon { display: block; }
+    [data-theme="dark"] .theme-toggle-btn .sun-icon { display: block; }
+    [data-theme="dark"] .theme-toggle-btn .moon-icon { display: none; }
 
     .hero-container {
-      max-width: 900px;
+      max-width: 1000px;
+      min-height: 100vh;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       margin: auto 0;
     }
 
@@ -146,23 +134,150 @@
       .main-headline { font-size: 2.4rem; }
       .sub-text { font-size: 1.1rem; }
     }
+
+
+
+    
+
+
+
+
+
+
+
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--bg-color);
+      border-bottom: 3.5px solid #000000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      z-index: 9999;
+      transform: translateY(-100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    header.visible { transform: translateY(0); }
+
+    header nav {
+      display: flex;
+      direction: row;
+      gap: 20px;
+      text-decoration: none; 
+    }
+
+    header nav a { color: var(--text-color); text-decoration: none; }
+    header nav a:hover { text-decoration: underline; }
+
+    /* projects */
+    .projects-section {
+      width: 100%;
+      max-width: 1000px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 4rem 0;
+      box-sizing: border-box;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      margin-top: 2.5rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      border: 3.5px solid #000000;
+      background: var(--text-color);
+      color: var(--bg-color) !important;
+      box-shadow: 6px 6px 0px #000000;
+      padding: 1.5rem;
+      border-radius: 14px;
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .project-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px #000000;
+    }
+
+    .project-card:active {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0px #000000;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border: 3px solid #000000;
+      background-color: var(--blue-accent);
+      border-radius: 8px;
+    }
+
+    /* footer */
+    footer {
+      display: none;
+
+      width: 100%;
+      border-top: 3.5px solid #000000;
+      padding: 2rem 0;
+      text-align: center;
+      font-weight: 800;
+      margin-top: auto;
+      background: var(--bg-color);
+    }
+
+    /* Random Background Images */
+    .bg-random-img {
+      position: absolute;
+      z-index: -1;
+      border: 3px solid #000000;
+      box-shadow: 4px 4px 0px #000000;
+      pointer-events: none;
+      /* max-width: 120px; */
+      border-radius: 8px;
+    }
+
+    .scroll-header {
+      z-index: 99999;
+    }
   </style>
 </head>
 <body>
 
-  <header class="top-bar">
+  <header id="scrollHeader">
+    <a href="../">
+      <img src="logo.png" height="35" alt="Logo">
+    </a>
+
+    <nav>
+      <a href="../#projects">projects</a>
+      <a href="blog">blog</a>
+      <a href="contact">contact team</a>
+    </nav>
+
     <button class="theme-toggle-btn" id="themeToggle" title="Toggle Light/Dark Mode" aria-label="Toggle Theme">
       <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
+
       <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
       </svg>
@@ -179,7 +294,7 @@
 
     <p class="sub-text">Many more useful, deeply unserious things are cooking.</p>
 
-    <button class="swipe-btn">
+    <button class="swipe-btn" onclick="location.href='#projects';">
       <span class="icon-box">
         <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
         </svg>
@@ -193,11 +308,34 @@
     </button>
   </main>
 
-  <script>
-    const themeToggleBtn = document.getElementById('themeToggle');
 
-    const savedTheme = localStorage.getItem('theme') || 
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  <section class="projects-section" id="projects">
+    <h2 class="main-headline">PROJECTS</h2>
+    <div class="projects-grid">
+      
+      <a href="https://your-project-1-url.com" target="_blank" class="project-card">
+        <img src="media/preview1.png" alt="preview">
+        <h2>Nurture</h3>
+        <p>A group of projects focused on self care, including habbit trackers, journals and more!</p>
+      </a>
+
+      <a href="https://your-project-2-url.com" target="_blank" class="project-card">
+        <img src="media/preview2.png" alt="preview">
+        <h2>Silly Census</h3>
+        <p>Silly Census turns group a voting into a game - complete with shared codes and results.</p>
+      </a>
+    </div>
+  </section>
+
+<footer>
+  <p>© 2026 COOL SHIT. All rights reserved.</p>
+</footer>
+
+
+  <script>
+    // dark / light mode
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') ||  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
     if (savedTheme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -213,6 +351,47 @@
         localStorage.setItem('theme', 'dark');
       }
     });
+
+  // header logic
+    const scrollHeader = document.getElementById('scrollHeader');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) {
+        scrollHeader.classList.add('visible');
+      } else {
+        scrollHeader.classList.remove('visible');
+      }
+    });
+
+    const imageFiles = [
+      'img1.png',
+      'img2.png',
+      'img3.png',
+      'img4.png'
+    ];
+
+    function generateRandomBackgroundImages() {
+      const totalImages = 6;
+      const bodyHeight = document.body.scrollHeight;
+
+      for (let i = 0; i < totalImages; i++) {
+        const img = document.createElement('img');
+        img.src = imageFiles[Math.floor(Math.random() * imageFiles.length)];
+        img.classList.add('bg-random-img');
+        
+        const randomX = Math.random() * (window.innerWidth - 140);
+        const randomY = Math.random() * (bodyHeight - 200);
+        const randomRot = Math.floor(Math.random() * 40) - 20;
+
+        img.style.left = `${randomX}px`;
+        img.style.top = `${randomY}px`;
+        img.style.transform = `rotate(${randomRot}deg)`;
+
+        document.body.appendChild(img);
+      }
+    }
+
+    window.addEventListener('load', generateRandomBackgroundImages);
   </script>
 
 </body>
