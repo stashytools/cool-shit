@@ -1,0 +1,59 @@
+.swipe-btn {
+  display: inline-flex;
+  align-items: center;
+  width: 250px;
+  padding: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  background-color: var(--blue-accent);
+  border: 3.5px solid #000000;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 5px 5px 0px #000000;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.swipe-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px #000000;
+}
+
+.swipe-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 18px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-right: 3px solid #000000;
+}
+
+.text-wrapper {
+  flex: 1;
+  overflow: hidden;
+  height: 1.2em;
+  display: flex;
+  justify-content: center;
+}
+
+.text-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-slide span {
+  line-height: 1.2em;
+  white-space: nowrap;
+}
+
+.swipe-btn:hover .text-slide {
+  transform: translateY(-100%);
+}

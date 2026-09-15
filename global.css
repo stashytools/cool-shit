@@ -1,0 +1,82 @@
+/* https://coolors.co/6c5ce7-011627-ff1654-f4cf3e-43aa8b */
+
+:root {
+  --bg-main: #f4f4f9;
+  --bg-card: #ffffff;
+  --text-dark: #1e1e24;
+  --text-muted: #6c757d;
+  
+  --primary: #0080ff;
+  --accent-p: #6C5CE7;
+  --accent-r: #FF1654;
+  --accent-y: #F4CF3E;
+  --accent-g: #43AA8B;
+  
+  --border-radius: 12px;
+  --border-style: 2px solid #1e1e24;
+  --shadow-fun: 4px 4px 0px #1e1e24;
+  --font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  font-family: var(--font-family);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: var(--border-style);
+  margin-bottom: 2rem;
+}
+
+nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  background: var(--accent-yellow);
+  border: var(--border-style);
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px #1e1e24;
+}
+
+nav a:hover {
+  background: var(--accent-pink);
+}
+
+.card {
+  background: var(--bg-card);
+  border: var(--border-style);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-fun);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  display: inline-block;
+  background: var(--accent-green);
+  padding: 0.2rem 0.6rem;
+  border: var(--border-style);
+  border-radius: 4px;
+  margin-top: 0;
+}
